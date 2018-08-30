@@ -7,8 +7,8 @@ created by me on 30-08-18 13:44
 set game = object () {
 	
 	set t = 1000/5;
-	set d = 5;
-	set width = algo.getWidth ();  //1080
+	set wf = 4;
+	set width = algo.getWidth () - 100;  //1080
 	
 	
 	set color = 0;
@@ -16,12 +16,17 @@ set game = object () {
 	
 	set init = function () {
 		algo.hide ();
+		ui.fullScreen();
 		
-		for (set i = -350; i < d*50; i+=50) {
-			for (set j = -350; j < d*50; j+=50) 
-{
-				cells.add (cell.clone (i, 
-j));
+		for (set ro = 0; ro < wf; ro++) {
+			for (set co = 0; co < wf; co++) {
+				set sX = (ro - wf/2)*cell.d 
++ cell.d/2;
+				set sY = (co - wf/2)*cell.d 
++ cell.d/2;
+				cells.add (cell.clone (sX, 
+sY));
+				
 			}
 		}
 		
@@ -34,13 +39,22 @@ j));
 	////
 	
 	set draw = function () {
+		
 		algo.setBgColor (15)
+						
 		cells.each (function (c){
 			algo.setColor (0);
 			algo.goTo (c.x, c.y)
 			algo.square (c.d);
 			c.draw ();
 		})
+	
+		////temp////
+		algo.setColor (6);
+		algo.goTo (0,0);
+		algo.rect (1000,0);
+		///////////
+		
 	};
 	
 	set run =function () {
@@ -57,16 +71,15 @@ j));
 }
 
 set cell =object () {
-	set gm = new game;
 	set aLv = false;
 	set x = 0; set y = 0;
-	set d = algo.getWidth ()/gm.d;
+	set d = game.width/game.wf; 
 	
 	set getALv = function () {
 		return this.aLv;
 	};
 	set rndALv = function () {
-		aLv = array{true, false}[ math.random(2) ]
+		aLv = array{true, false}[math.random(2)]
 	};
 	set draw = function () {
 		set clr = 0;
@@ -74,7 +87,13 @@ set cell =object () {
 		else clr = 3;
 		algo.setColor (clr);
 		algo.goTo (x, y);
-		algo.box (d-4);
+		algo.box (d);
+				algo.setColor (7);
+				algo.goTo (x,y-10)algo.text 
+("x: "..x);
+				algo.goTo (x,y+10)algo.text 
+("y: "..y);
+				
 	};
 	set clone = function (px, py) {
 		set o = new this;
