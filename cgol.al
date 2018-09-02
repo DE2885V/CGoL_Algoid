@@ -10,7 +10,7 @@
 ////classes////
 set game = object () {
 	
-	set t = 3000//5;
+	set t = 3000/5;
 	set wf = 9; //max:9
 	set width = algo.getWidth () - 100;  //1080
 	
@@ -37,8 +37,7 @@ sY, ro, co));
 	};
 	
 	////
-	////set a = array {1, 2, 3, 4}.each(function (item) 
-{util.log (item);});
+	////set a = array {1, 2, 3, 4}.each(function (item) {util.log (item);});
 	////
 	
 	set draw = function () {
@@ -56,8 +55,7 @@ sY, ro, co));
 	set run =function () {
 		draw ();
 		cells.each (function (c){
-			c.nextGen (); //здесь должен быть 
-пересчет поколения
+			c.nextGen (); //здесь должен быть пересчет поколения
 		})
 	};
 	
@@ -92,7 +90,7 @@ set cell =object () {
 		if (aLv){
 			if (numOfNb == 2 || numOfNb == 3) 
 aLv = true;
-			elseif (numOfNb<2 || numOfNb>3) aLv 
+			elseif (numOfNb<2 || numOfNb>3) aLv
 = false;
 		}else {
 			if (numOfNb == 3) aLv = true;
