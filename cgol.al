@@ -25,11 +25,11 @@ set game = object () {
 		for (set ro = 0; ro < wf; ro++) {
 			for (set co = 0; co < wf; co++) {
 				set sX = (ro - wf/2)*cell.d 
-+ cell.d/2;
+				+ cell.d/2;
 				set sY = (co - wf/2)*cell.d 
-+ cell.d/2;
+				+ cell.d/2;
 				cells.add (cell.clone (sX, 
-sY, ro, co));
+				sY, ro, co));
 				
 			}
 		}
@@ -56,6 +56,7 @@ sY, ro, co));
 		draw ();
 		cells.each (function (c){
 			c.nextGen (); //здесь должен быть пересчет поколения
+		
 		})
 	};
 	
@@ -80,6 +81,10 @@ set cell =object () {
 	};
 	set countNb = function (cells) {
 		// ...
+		//пробежаться по всем ячейкам и записать в них кол-во соседей
+		for (set ir = 0; ir < cells; i++) {
+			
+		}
 	}
 	set nextGen = function () {
 		/////////simul_count_Nb
@@ -89,9 +94,9 @@ set cell =object () {
 		// - состояние клетки
 		if (aLv){
 			if (numOfNb == 2 || numOfNb == 3) 
-aLv = true;
+			aLv = true;
 			elseif (numOfNb<2 || numOfNb>3) aLv
-= false;
+			= false;
 		}else {
 			if (numOfNb == 3) aLv = true;
 		}
@@ -104,10 +109,10 @@ aLv = true;
 		algo.goTo (x, y);
 		algo.box (d-10);
 		algo.setColor (9);
-		algo.goTo (x,y-10)		algo.text 
-("ro: "..ro);
-		algo.goTo (x,y+10)	algo.text ("n: 
-"..numOfNb);
+		algo.goTo (x,y-10)algo.text 
+		("ro: "..ro);
+		algo.goTo (x,y+10)algo.text ("n: 
+		"..numOfNb);
 		
 	};
 	set clone = function (px, py, ro, co) {
